@@ -3,15 +3,18 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const mongoURI = process.env.MONGO;
 
-mongoose.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true })
+const uri = 'mongodb+srv://abrsh1:admin@cluster0.iissraf.mongodb.net/mern1?retryWrites=true&w=majority';
+
+mongoose.connect(uri)
   .then(() => {
     console.log('Connected to MongoDB');
+    // Your code here
   })
-  .catch((err) => {
-    console.error('Error connecting to MongoDB', err);
+  .catch(error => {
+    console.error('Error connecting to MongoDB:', error.message);
   });
+
 const app = express();
 
 app.listen(3000, () => {
